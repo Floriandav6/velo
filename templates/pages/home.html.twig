@@ -1,0 +1,32 @@
+{% extends 'layouts/layout.html.twig'%}
+{% import 'macros/advert-macros.html.twig' as advertElements %}
+{% block header %}
+
+{% endblock header %}
+
+{% block content %}
+
+    <section>
+        <div class="section-inner">
+            <h1 class="text-center mt-4 mb50">Bienvenue sur velos-occasion.be</h1>
+            <p class="text-center">Les meilleur site de l'histoire des sites d'annonces de vélos d'occasion</p>
+
+            <div class="container">
+                <hr>
+                <div class="row mb50">
+                    <h2>Les dernières annonces</h2>
+                </div>
+                {% for advert in adverts %}
+                    {% if loop.index0 % 3 == 0 %}
+                        <div class="row">
+                    {% endif %}
+                    {{ advertElements.advert_block(advert, 4) }}
+                    {% if loop.index0 % 3 == 2 or loop.last%}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
